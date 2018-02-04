@@ -8,7 +8,8 @@ build
 ```
 install dependencies
 ```
-npm install react@15.5.4 react-dom@15.5.4 --save  
+npm install react@15.5.4  --save  
+npm install react-dom@15.5.4 --save  
 ```
 
 install webpack

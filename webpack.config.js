@@ -1,5 +1,5 @@
-const webpack = require('webpack');
 const { resolve } = require('path');
+const webpack = require('webpack');
 //Resolving a path: give the name of a file or dir to a tool (like the path library) and rely on it to find the exact path to the file. no need for exact path specifications!
 
 //nice 😎
@@ -18,6 +18,21 @@ module.exports = {
 
 	resolve: {
 		extensions: ['.js', '.jsx']
-	} //webpack can locate files with these extensions
+	}, //webpack can locate files with these extensions
+
+	module: {
+		rules: [
+			{
+				test: /\.jsx?$/,//files for loader to transform
+				loader: "babel-loader",
+				options: {
+					presets: [
+						"es2015",
+						"react"
+					]
+				}
+			},
+		],
+	}
 
 };
