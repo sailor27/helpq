@@ -1,38 +1,60 @@
-const { resolve } = require('path');
 const webpack = require('webpack');
-//Resolving a path: give the name of a file or dir to a tool (like the path library) and rely on it to find the exact path to the file. no need for exact path specifications!
-
-//nice 😎
-
+const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-	//entry point = file that tells webpack (the module bundler) how to build the app.
 
-	entry: [
-		resolve(__dirname, "src") + "/index.jsx"
-	], //where bundling starts
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    resolve(__dirname, "src", "index.jsx")
+  ],
 
-	output: {
-		filename: 'app.bundle.js',
-		path: resolve(__dirname, 'build'),
-	}, //where to put the bundle webpack creates
+  output: {
+    filename: 'app.bundle.js',
+    path: resolve(__dirname, 'build'),
+    publicPath: '/'
+  },
 
-	resolve: {
-		extensions: ['.js', '.jsx']
-	}, //webpack can locate files with these extensions
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
 
-	module: {
-		rules: [
-			{
-				test: /\.jsx?$/,//files for loader to transform
-				loader: "babel-loader",
-				options: {
-					presets: [
-						"es2015",
-						"react"
-					]
-				}
-			},
-		],
-	}
+  devtool: '#source-map',
 
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, 'build'),
+    publicPath: '/'
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        options: {
+          presets: [
+            ["es2015", {"modules": false}],
+            "react",
+          ],
+          plugins: [
+            "react-hot-loader/babel"
+          ]
+        }
+      }
+    ]
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+		new HtmlWebpackPlugin({
+		 template:'template.ejs',
+		 appMountId: 'react-app-root',
+		 title: 'React Help Queue',
+		 filename: resolve(__dirname, "build", "index.html"),
+	 }),
+  ]
 };
