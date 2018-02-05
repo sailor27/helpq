@@ -32,6 +32,16 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
+        enforce: "pre",
+        loader: "eslint-loader",
+        exclude: /node_modules/,
+        options: {
+          emitWarning: true,
+          configFile: "./.eslintrc.json"
+          }
+        },
+        {
+        test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
@@ -53,7 +63,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 		 template:'template.ejs',
 		 appMountId: 'react-app-root',
-		 title: 'React Help Queue',
+		 title: 'Help Q',
 		 filename: resolve(__dirname, "build", "index.html"),
 	 }),
   ]

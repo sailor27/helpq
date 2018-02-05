@@ -54,3 +54,85 @@ generate index.html
 ```
 npm install html-webpack-plugin@2.29.0 --save-dev
 ```
+
+install eslint globally:
+```
+npm install eslint -g
+npm install eslint-plugin-react -g
+```
+
+intialize eslint:
+```
+eslint --init
+
+answers:
+* ? Are you using ECMAScript 6 features? Yes
+* ? Are you using ES6 modules? Yes
+* ? Where will your code run? Browser
+* ? Do you use CommonJS? No
+* ? Do you use JSX? Yes
+* ? Do you use React? Yes
+* ? What style of indentation do you use? Spaces  
+* ? What quotes do you use for strings? Single
+* ? What line endings do you use? Unix
+* ? Do you require semicolons? Yes
+* ? What format do you want your config file to be in? JSON
+```
+
+run eslint:
+```
+eslint src/** src/**/**
+```
+
+configure eslintrc.JSON
+```
+"rules": {
+    "react/jsx-uses-vars": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/no-multi-comp": 2,
+    "react/jsx-indent-props": [
+        "error",
+        2
+      ],
+    "react/jsx-pascal-case": 2,
+    "react/prop-types": 2,
+    "react/jsx-indent": [
+        "error",
+        2
+    ],
+```
+add linting to package.JSON
+```
+"scripts": {
+    "lint": "eslint src/** src/**/**; exit 0",
+    "lint-fix": "eslint src/** src/**/** --fix; exit 0"
+```
+install eslint loader
+```
+npm install eslint-loader --save-dev
+```
+update webpack.config.js
+```
+test: /\.jsx?$/,
+        enforce: "pre",
+        loader: "eslint-loader",
+        exclude: /node_modules/,
+        options: {
+          emitWarning: true,
+          configFile: "./.eslintrc.json"
+          }
+        },
+        {
+        test: /\.jsx?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        options: {
+          presets: [
+            ["es2015", {"modules": false}],
+            "react",
+          ],
+          plugins: [
+            "react-hot-loader/babel"
+```
