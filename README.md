@@ -87,6 +87,7 @@ eslint src/** src/**/**
 configure eslintrc.JSON
 ```
 "rules": {
+    "react/jsx-key": 2,
     "react/jsx-uses-vars": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-no-duplicate-props": 2,
