@@ -137,3 +137,11 @@ test: /\.jsx?$/,
           plugins: [
             "react-hot-loader/babel"
 ```
+install react router dom
+```
+npm install react-router-dom@4.0.0 --save
+```
+* import hash router in index.JSX
+* wrap App in HashRouter tags
+* Add switch for all rotes on App.JSX
+* Add links to header
