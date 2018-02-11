@@ -1,7 +1,3 @@
-## Project Guide
-
-
-
 1. Create repositories, support and config files. Install atom packages for react.
 
 ```
@@ -30,10 +26,10 @@ build
 npm install webpack@3.4.0 webpack-dev-server@2.5.0 eslint eslint-plugin-react -g   
 ```
 ```
-npm install react@15.5.4 react-dom@15.5.4 prop-types@15.5.10 --save
+npm install react@15.5.4 react-dom@15.5.4 react-router-dom prop-types@15.5.10 --save
 ```
 ```
-npm install webpack@3.4.0 babel-core@6.24.1 babel-loader@7.0.0 babel-preset-es2015@6.24.1 babel-preset-react@6.24.1 webpack-dev-server@2.5.0 react-hot-loader@3.0.0-beta.7 html-webpack-plugin@2.29.0 eslint-loader --save-dev
+npm install webpack@3.4.0 babel-core@6.24.1 babel-loader@7.0.0 babel-preset-es2015@6.24.1 babel-preset-react@6.24.1 webpack-dev-server@2.5.0 react-hot-loader@3.0.0-beta.7 html-webpack-plugin@2.29.0 eslint eslint-plugin-react eslint-loader  url-loader@0.6.2 file-loader@1.1.6 --save-dev
 ```
 ```
 npm install --save styled-jsx
@@ -41,17 +37,28 @@ npm install --save styled-jsx
 
 3. Configure .eslintrc.json, template.ejs, webpack.config
  * Copy config files from practice repo
+ * eslint --init (set up eslint config file)
  * webpack-dev-server
  * npm run start
  * npm run lint
  * npm run lint-fix
 
-4. Set up index.jsx with hash router and HMR. Create more components. Create component tree.
+4. Set up index.jsx with hash router and HMR. Set up App component with Switch. Create Keg List component. Test routing between components.
 
-5. Set up App component with Switch. Test routing between components.
+5. Create data model component and iterate data into the view.
 
-7. Wireframe style of components
+6. Wireframe style of components.
 
-6. Create data model component and iterate data into the view.
+7. Refine style of components and resolve issues.
 
-8. Refine style of components and resolve issues.
+## Creating Stateful Components:
+
+1. First we'll create a stateful class-based component that will record whether our app is in the state of displaying questions, or the state of displaying the form. We know this data must be state, not props, because it must be able to change.
+
+2. Then we'll construct an event to toggle this state value when the user completes the questions.
+
+3. After that we'll create a new component to contain the questions we want to appear before the form.
+
+4. Next we'll learn how to use JSX conditional rendering to change what's displayed depending on the current state. That way our app can go from the state of displaying questions, to the state of displaying our form.
+
+5. Finally, we'll learn about something called unidirectional data flow, a concept will allow our components to communicate and work in sync. (We'll also refactor the event we create in step 2.)
