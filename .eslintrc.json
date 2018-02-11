@@ -16,6 +16,8 @@
         "react"
     ],
     "rules": {
+				"react/require-render-return": 2,
+				"react/no-direct-mutation-state": 2,
         "react/jsx-key": 2,
         "react/jsx-uses-vars": 2,
         "react/jsx-uses-react": 2,
@@ -32,6 +34,7 @@
             "error",
             2
           ],
+				"no-console":0,
         "indent": [
             "error",
             2
