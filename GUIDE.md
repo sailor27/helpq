@@ -34,6 +34,8 @@ npm install webpack@3.4.0 babel-core@6.24.1 babel-loader@7.0.0 babel-preset-es20
 ```
 npm install --save styled-jsx
 npm install uuid@3.2.1
+npm install moment@2.18.1
+
 ```
 
 3. Configure .eslintrc.json, template.ejs, webpack.config

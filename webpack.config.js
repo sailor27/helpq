@@ -8,7 +8,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    resolve(__dirname, 'src', 'index.jsx')
+    resolve(__dirname, "src", "index.jsx")
   ],
 
   output: {
@@ -33,26 +33,37 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
+        enforce: "pre",
+        loader: "eslint-loader",
         exclude: /node_modules/,
         options: {
           emitWarning: true,
-          configFile: './.eslintrc.json'
-        }
-      },
-      {
+          configFile: "./.eslintrc.json"
+          }
+        },
+        {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
           presets: [
-            ['es2015', {'modules': false}],
-            'react',
+            ["es2015", {"modules": false}],
+            "react",
           ],
           plugins: [
-            'react-hot-loader/babel'
+            "react-hot-loader/babel",
+            "styled-jsx/babel"
           ]
+        }
+      },
+      {
+        test: /\.(png|gif|jp(e*)g|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8000,
+            name: 'images/[hash]-[name].[ext]'
+          }
         }
       }
     ],
@@ -64,8 +75,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
-      title: 'React Help Queue',
-      filename: resolve(__dirname, 'build', 'index.html'),
+      title: 'HELP',
+      filename: resolve(__dirname, "build", "index.html"),
     }),
   ]
 };
