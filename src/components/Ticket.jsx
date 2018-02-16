@@ -14,13 +14,24 @@ function Ticket(props){
     height: '200px',
     boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
   };
-  return (
-    <div style={ticketStyles}>
-      <h3>{props.location} - {props.names}</h3>
-      <h4>{props.formattedWaitTime} ago</h4>
-      <p><em>{props.issue}</em></p>
-    </div>
-  );
+  const ticketInformation =
+		<div style={ticketStyles}>
+		  <h3>{props.location} - {props.names}</h3>
+		  <h4>{props.formattedWaitTime} ago</h4>
+		  <p><em>{props.issue}</em></p>
+		</div>;
+  if (props.currentRouterPath === '/admin') {
+    return (
+      <div onClick={() => {alert('you clicked ' + props.names);}}>
+        {ticketInformation}
+      </div>
+    );
+  } else
+    return (
+      <div>
+        {ticketInformation}
+      </div>
+    );
 }
 
 Ticket.propTypes = {
@@ -28,6 +39,7 @@ Ticket.propTypes = {
   location: PropTypes.string.isRequired,
   issue: PropTypes.string.isRequired,
   formattedWaitTime: PropTypes.string.isRequired,
+  currentRouterPath: PropTypes.string
 };
 
 export default Ticket;

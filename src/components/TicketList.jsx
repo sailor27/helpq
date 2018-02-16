@@ -12,24 +12,23 @@ function TicketList(props){
     justifyContent: 'space-around',
     alignItems: 'center'
   };
-
-
   return (
     <div style={ticketListStyles}>
       <hr/>
       {props.ticketList.map((ticket) =>
-        <Ticket names={ticket.names}
-          location={ticket.location}
-          issue={ticket.issue}
-          formattedWaitTime={ticket.formattedWaitTime}
-          key={ticket.id}/>
+			  <Ticket names={ticket.names}
+			    location={ticket.location}
+			    issue={ticket.issue}
+			    formattedWaitTime={ticket.formattedWaitTime}
+			    currentRouterPath={props.currentRouterPath}
+			    key={ticket.id}/>
       )}
-    </div>
-  );
+	   </div>
+	  );
 }
 
 TicketList.propTypes = {
-  ticketList: PropTypes.array
+	  ticketList: PropTypes.array,
+	  currentRouterPath: PropTypes.string
 };
-
 export default TicketList;

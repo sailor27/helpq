@@ -65,3 +65,5 @@ npm install moment@2.18.1
 4. Next we'll learn how to use JSX conditional rendering to change what's displayed depending on the current state. That way our app can go from the state of displaying questions, to the state of displaying our form.
 
 5. Finally, we'll learn about something called unidirectional data flow, a concept will allow our components to communicate and work in sync. (We'll also refactor the event we create in step 2.)
+
+***** /*eslint-disable */    /*eslint-enable */   *****
