@@ -5,6 +5,7 @@ import Moment from 'moment';
 
 function NewTicketForm(props){
 
+
   let _names = null;
   let _location = null;
   let _issue = null;
@@ -20,6 +21,7 @@ function NewTicketForm(props){
 
   return (
     <div>
+      <h3>Request Help</h3>
       <form onSubmit={handleNewTicketFormSubmission}>
         <input
           type='text'
@@ -38,6 +40,22 @@ function NewTicketForm(props){
           ref={(input) => {_issue = input;}}/>
         <button type='submit'>Help!</button>
       </form>
+      <style jsx>{`
+				form{
+					display: flex;
+					flex-flow: column nowrap;
+					height: 200px;
+					align-items: center;
+					justify-content: space-between;
+				}
+
+				input, textarea{
+					font-size: 1em;
+					border: 3px solid rgb(201, 164, 112);
+					border-radius: 10px;
+				}
+
+			`}</style>
     </div>
   );
 }

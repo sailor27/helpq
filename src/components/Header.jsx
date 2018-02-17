@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   var headerStyle = {
-    backgroundColor: '#FFFAFA',
     color: '#EB6EBD',
     fontFamily: 'monospace',
     fontSize: '32px',

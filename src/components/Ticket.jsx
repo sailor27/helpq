@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'moment';
+/*eslint-disable */import Moment from 'moment';/*eslint-disable */
 
 function Ticket(props){
   var ticketStyles = {
@@ -15,31 +15,39 @@ function Ticket(props){
     boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
   };
   const ticketInformation =
-		<div style={ticketStyles}>
-		  <h3>{props.location} - {props.names}</h3>
-		  <h4>{props.formattedWaitTime} ago</h4>
-		  <p><em>{props.issue}</em></p>
-		</div>;
-  if (props.currentRouterPath === '/admin') {
+    <div style={ticketStyles}>
+      <h3>{props.location} - {props.names}</h3>
+      <h4>{props.formattedWaitTime}</h4>
+      <hr/>
+    </div>;
+  if (props.currentRouterPath === '/admin'){
     return (
-      <div onClick={() => {alert('you clicked ' + props.names);}}>
+      <div onClick={() => {props.onTicketSelection(props.ticketId);}}>
         {ticketInformation}
       </div>
     );
-  } else
+  } else {
     return (
       <div>
         {ticketInformation}
       </div>
     );
+  }
 }
+
+
+
+
+
 
 Ticket.propTypes = {
   names: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  issue: PropTypes.string.isRequired,
+  issue: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
-  currentRouterPath: PropTypes.string
+  currentRouterPath: PropTypes.string,
+  onTicketSelection: PropTypes.func,
+  ticketId: PropTypes.string.isRequired
 };
 
 export default Ticket;
