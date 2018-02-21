@@ -34,6 +34,7 @@ Admin.propTypes = {
   ticketList: PropTypes.object,
   currentRouterPath: PropTypes.string.isRequired,
   selectedTicket: PropTypes.string
+
 };
 
 export default connect(mapStateToProps)(Admin);
