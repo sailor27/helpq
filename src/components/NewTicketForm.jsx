@@ -73,6 +73,4 @@ NewTicketForm.propTypes = {
   onNewTicketCreation: PropTypes.func
 };
 
-NewTicketForm = connect()(NewTicketForm);
-
-export default NewTicketForm;
+export default connect()(NewTicketForm);
