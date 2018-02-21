@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/*eslint-disable */import Moment from 'moment';/*eslint-disable */
 import { connect } from 'react-redux';
+import c from './../constants';
 
 function Ticket(props){
   var ticketStyles = {
@@ -15,14 +15,14 @@ function Ticket(props){
     height: '200px',
     boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
   };
-	function handleSavingSelectedTicket(ticketId){
-		const {dispatch} = props;
-		const action = {
-			type: 'SELECTED_TICKET',
-			ticketId: ticketId
-		};
-		dispatch(action);
-	}
+  function handleSavingSelectedTicket(ticketId){
+    const {dispatch} = props;
+    const action = {
+      type: c.SELECT_TICKET,
+      ticketId: ticketId
+    };
+    dispatch(action);
+  }
   const ticketInformation =
     <div style={ticketStyles}>
       <h3>{props.location} - {props.names}</h3>

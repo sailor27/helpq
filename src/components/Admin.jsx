@@ -5,36 +5,31 @@ import TicketDetail from './TicketDetail';
 import { connect } from 'react-redux';
 
 function Admin(props) {
-
-
+  console.log(props.selectedTicket);
   let optionalSelectedTicketContent = null;
-
   if (props.selectedTicket.length > 0) {
     optionalSelectedTicketContent = <TicketDetail selectedTicket={props.ticketList[props.selectedTicket]}/>;
   }
-
   return (
     <div>
       <h2>Admin</h2>
       {optionalSelectedTicketContent}
       <TicketList
         ticketList={props.ticketList}
-        currentRouterPath={props.currentRouterPath}
-        onTicketSelection={props.onTicketSelection}/>
+        currentRouterPath={props.currentRouterPath}/>
     </div>
   );
 }
+Admin.propTypes = {
+  ticketList: PropTypes.object,
+  currentRouterPath: PropTypes.string.isRequired,
+  // selectedTicket: PropTypes.string
+};
 const mapStateToProps = state => {
   return {
     selectedTicket: state.selectedTicket,
     ticketList: state.masterTicketList
   };
-};
-Admin.propTypes = {
-  ticketList: PropTypes.object,
-  currentRouterPath: PropTypes.string.isRequired,
-  selectedTicket: PropTypes.string
-
 };
 
 export default connect(mapStateToProps)(Admin);

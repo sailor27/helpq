@@ -8,20 +8,14 @@ import Admin from './Admin';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import c from './../constants';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-		console.log(props);
-    this.state = {
-      selectedTicket: null
-    };
-  }
+
 	componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTicketElapsedWaitTime(),
-    6000
+    60000
     );
   }
   componentWillUnmount(){
@@ -33,7 +27,7 @@ class App extends React.Component {
 				const ticket = this.props.masterTicketList[ticketId];
 				const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
 			const action = {
-				type: 'UPDATE_TIME',
+				type: c.UPDATE_TIME,
 				id: ticketId,
 				formattedWaitTime: newFormattedWaitTime
 			};
