@@ -89,3 +89,8 @@ npm install jest@20.0.4 --save-dev
 
 $ npm install redux@3.7.2 --save
 $ npm install react-redux@5.0.6 --save
+
+## Integrate Firebase API BaaS
+
+1. Install firebase, import, and intialize a firebase instance.
+2. Create refs to point to specific areas of the database
