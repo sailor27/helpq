@@ -1,5 +1,7 @@
-import selectedTicketReducer from './../../src/reducers/selected-ticket-reducer';
-import c from './../constants';
+import constants from './../constants';
+const { c } = constants;
+
+
 export default (state = {}, action) => {
   switch (action.type) {
   case c.SELECT_TICKET:
